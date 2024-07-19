@@ -1,0 +1,64 @@
+
+<!DOCTYPE html>
+<html lang="en ">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Question 1</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        h2 {
+            color: #333;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 15px 20px;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button :hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <h2>Employee Pay Calculator</h2>
+    <button onclick="Calculate Pay()">Enter Employee Details</button>
+
+    <script>
+        function calculatePay() {
+            // Prompt user for input
+            const name = prompt("Enter employee name:");
+            const hoursWorked = parseFloat(prompt("Enter hours worked:"));
+            const ratePerHour = parseFloat(prompt("Enter rate per hour:"));
+
+            // Validate inputs
+            if (isNaN(hoursWorked) || isNaN(ratePerHour)) {
+                alert("Please enter valid numbers for hours worked and rate per hour.");
+                return;
+            }
+
+            // Calculate basic pay
+            const basicPay = hoursWorked * ratePerHour;
+
+            // Calculate tax
+            let tax = 0;
+            if (basicPay > 50000) {
+                tax = basicPay * 0.2;
+            } else if (basicPay >= 20000 && basicPay <= 50000) {
+                tax = basicPay * 0.1;
+            }
+
+            // Display results
+            alert(`Employee Name: ${name}\nBasic Pay: ${basicPay.toFixed(2)}\nTax: ${tax.toFixed(2)}`);
+        }
+    </script>
+</body>
+</html>
